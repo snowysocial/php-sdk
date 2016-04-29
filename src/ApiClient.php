@@ -4,8 +4,6 @@ namespace SnowySocial;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Stream;
 use SnowySocial\EndPoints\EndPointInterface;
 use SnowySocial\Exceptions\InvalidApiToken;
 
@@ -16,7 +14,7 @@ use SnowySocial\Exceptions\InvalidApiToken;
  */
 class ApiClient
 {
-    const API_URL = 'http://snowysocial.app/api';
+    const API_URL = 'https://www.snowysocial.co.uk/api';
 
     const HTTP_POST = 'post';
 
