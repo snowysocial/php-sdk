@@ -1,0 +1,14 @@
+{
+  "name": "snowysocial/sdk",
+  "description": "The SnowySocial SDK.",
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "guzzlehttp/guzzle": "6.0.*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "SnowySocial\\": "src/"
+    }
+  }
+}
