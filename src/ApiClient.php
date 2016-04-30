@@ -15,9 +15,7 @@ use SnowySocial\Exceptions\InvalidApiToken;
 class ApiClient
 {
     const API_URL = 'https://www.snowysocial.co.uk/api';
-
     const HTTP_POST = 'post';
-
     const HTTP_GET = 'get';
 
     /**
@@ -46,7 +44,9 @@ class ApiClient
                     ]
                 ]
             )->getBody()->getContents();
-        } catch (ClientException $e) {
+        } catch (\Exception $e) {
+            var_dump($e->getResponse()->getBody()->getContents());
+            die;
             $error = json_decode($e->getResponse()->getBody()->getContents(), true);
             if (isset($error['error']['message']) && $error['error']['message'] == 'Invalid API Credentials') {
                 throw new InvalidApiToken;
