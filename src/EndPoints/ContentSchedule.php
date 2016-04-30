@@ -20,7 +20,7 @@ class ContentSchedule implements EndPointInterface
      */
     private $content;
     /**
-     * @var string
+     * @var \DateTime
      */
     private $sendTime;
     /**
@@ -35,12 +35,17 @@ class ContentSchedule implements EndPointInterface
     /**
      * @param array       $socialAccountIds
      * @param string      $content
-     * @param string      $sendTime
+     * @param \DateTime   $sendTime
      * @param null|string $imageUrl
      * @param null|string $explicitUrl
      */
-    public function __construct(array $socialAccountIds, $content, $sendTime, $imageUrl = null, $explicitUrl = null)
-    {
+    public function __construct(
+        array $socialAccountIds,
+        $content,
+        \DateTime $sendTime,
+        $imageUrl = null,
+        $explicitUrl = null
+    ) {
         $this->socialAccountIds = $socialAccountIds;
         $this->content = $content;
         $this->sendTime = $sendTime;
@@ -58,7 +63,7 @@ class ContentSchedule implements EndPointInterface
             'data' => [
                 'content' => $this->content,
                 'social_accounts' => $this->socialAccountIds,
-                'datetime' => $this->sendTime,
+                'datetime' => $this->sendTime->format('c'),
                 'explicit_url' => $this->explicitUrl,
                 'image_url' => $this->imageUrl
             ],
