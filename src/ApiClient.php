@@ -45,19 +45,14 @@ class ApiClient
                 ]
             )->getBody()->getContents();
         } catch (\Exception $e) {
-            var_dump($e->getResponse()->getBody()->getContents());
-            die;
-            $error = json_decode($e->getResponse()->getBody()->getContents(), true);
-            if (isset($error['error']['message']) && $error['error']['message'] == 'Invalid API Credentials') {
-                throw new InvalidApiToken;
-            }
+            return "";
         }
     }
 
     public function getClient()
     {
         if (!$this->client) {
-            $this->client == new Client();
+            $this->client = new Client();
         }
 
         return new Client();
